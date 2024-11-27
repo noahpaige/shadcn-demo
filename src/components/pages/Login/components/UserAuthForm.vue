@@ -1,29 +1,49 @@
 <template>
-  <div class="user-auth-form">
-    <!-- Your form content goes here -->
+  <div :class="cn('grid gap-6', $attrs.class ?? '')">
+    <form @submit="onSubmit">
+      <div class="grid gap-2">
+        <div class="grid gap-1">
+          <Label class="sr-only" for="email"> Email </Label>
+          <Input
+            id="email"
+            placeholder="name@example.com"
+            type="email"
+            auto-capitalize="none"
+            auto-complete="email"
+            auto-correct="off"
+            :disabled="isLoading"
+          />
+        </div>
+        <Button :disabled="isLoading">
+          <Loader2 v-if="isLoading" class="mr-2 h-4 w-4 animate-spin" />
+          Sign In with Email
+        </Button>
+      </div>
+    </form>
+    <div class="relative">
+      <div class="absolute inset-0 flex items-center">
+        <span class="w-full border-t" />
+      </div>
+    </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import label from "@/components/ui/label";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-vue-next";
 
-export default {
-  name: "UserAuthForm",
-  components: {},
-  data() {
-    return {
-      // Your form data properties go here
-    };
-  },
-  methods: {
-    // Your form methods go here
-  },
-  mounted() {
-    // Your form lifecycle hooks go here
-  },
-};
+const isLoading = ref(false);
+async function onSubmit(event) {
+  event.preventDefault();
+  isLoading.value = true;
+
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 3000);
+}
 </script>
 
 <style scoped>

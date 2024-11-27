@@ -1,30 +1,48 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div id="app">
+    <SidebarProvider>
+      <MainSidebar>
+        <template #sidebar-content>
+          <component :is="currentSidebarComponent"></component>
+        </template>
+        <MainNav>
+          <router-view></router-view>
+        </MainNav>
+      </MainSidebar>
+    </SidebarProvider>
+    <Toaster
+      closeButton
+      :toastOptions="{
+        unstyled: true,
+        class: 'bg-primary',
+      }"
+    />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
+<script setup>
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import MainSidebar from "./components/composites/MainSidebar.vue";
+import MainNav from "./components/composites/MainNav.vue";
+import HomeSidebarContent from "./components/pages/Home/components/HomeSidebarContent.vue";
+import AnalyticsSidebarContent from "./components/pages/Analytics/components/AnalyticsSidebarContent.vue";
+import { Toaster } from "@/components/ui/sonner";
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+const route = useRoute();
+
+const sidebarComponents = {
+  Home: HomeSidebarContent,
+  Analytics: AnalyticsSidebarContent,
+};
+
+const currentSidebarComponent = ref(null);
+
+watch(
+  route,
+  (newRoute) => {
+    currentSidebarComponent.value = sidebarComponents[newRoute.name];
+  },
+  { immediate: true }
+);
+</script>
