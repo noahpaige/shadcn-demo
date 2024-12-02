@@ -1,19 +1,19 @@
 <template>
     <div class="flex gap-0.5 align-middle bg-white/10 rounded w-36 h-8 justify-center items-center">
-        <div class="h-6 w-5 overflow-y-hidden">
-            <div class="animate-flip-clock" v-for="(timeStr, index) in timeArr[0]" :key="index">
+        <div class="flex flex-col items-center h-6 w-6 overflow-y-hidden">
+            <div class="animate-flip-clock w-fit" v-for="(timeStr, index) in timeArr[0]" :key="index">
                 {{ timeStr }}
             </div>
         </div>
         <div class="text-muted-foreground">:</div>
-        <div class="h-6 w-5 overflow-y-hidden">
-            <div class="animate-flip-clock" v-for="(timeStr, index) in timeArr[1]" :key="index">
+        <div class="flex flex-col items-center h-6 w-6 overflow-y-hidden">
+            <div class="animate-flip-clock w-fit" v-for="(timeStr, index) in timeArr[1]" :key="index">
                 {{ timeStr }}
             </div>
         </div>
         <div class="text-muted-foreground">:</div>
-        <div class="h-6 w-5 overflow-y-hidden">
-            <div class="animate-flip-clock" v-for="(timeStr, index) in timeArr[2]" :key="`${index}-${timeStr}`">
+        <div class="flex flex-col items-center h-6 w-6 overflow-y-hidden">
+            <div class="animate-flip-clock w-fit" v-for="(timeStr, index) in timeArr[2]" :key="`${index}-${timeStr}`">
                 {{ timeStr }}
             </div>
         </div>
@@ -31,9 +31,9 @@ const timeArr = ref([['00', '00'], ['00', '00'], ['00', '00']]);
 function updateClock() {
     const currentTime = new Date();
     const timeStrs = [
-        currentTime.getHours().toString().padStart(2, '0'),
-        currentTime.getMinutes().toString().padStart(2, '0'),
-        currentTime.getSeconds().toString().padStart(2, '0'),
+        currentTime.getUTCHours().toString().padStart(2, '0'),
+        currentTime.getUTCMinutes().toString().padStart(2, '0'),
+        currentTime.getUTCSeconds().toString().padStart(2, '0'),
     ];
 
     function updateTime(index) {
