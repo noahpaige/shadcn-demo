@@ -1,11 +1,15 @@
-<template>
-  <h1>Opcon Page</h1>
-</template>
+<script setup lang="ts">
 
-<script setup>
-import MainNav from "@/components/composites/MainNav.vue";
 </script>
 
-<style scoped>
-/* Your styles go here */
-</style>
+<template>
+  <div class="flex flex-col gap-4 p-4 justify-center items-center h-full w-full">
+    <div class="text-8xl pb-10">
+      Welcome to Opcon
+    </div>
+    <div class="text-muted-foreground text-md">
+      select something on the sidebar to get started
+    </div>
+  </div>
+  
+</template>
