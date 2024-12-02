@@ -25,16 +25,15 @@
 import { ref } from 'vue';
 
 // Define your clock data and functionality here
-const currentTime = ref(new Date());
 const timeArr = ref([['00', '00'], ['00', '00'], ['00', '00']]);
 
 // Define your clock methods here
 function updateClock() {
-    currentTime.value = new Date();
+    const currentTime = new Date();
     const timeStrs = [
-        currentTime.value.getHours().toString().padStart(2, '0'),
-        currentTime.value.getMinutes().toString().padStart(2, '0'),
-        currentTime.value.getSeconds().toString().padStart(2, '0'),
+        currentTime.getHours().toString().padStart(2, '0'),
+        currentTime.getMinutes().toString().padStart(2, '0'),
+        currentTime.getSeconds().toString().padStart(2, '0'),
     ];
 
     function updateTime(index) {
