@@ -90,13 +90,22 @@ module.exports = {
           from: { height: "var(--radix-collapsible-content-height)" },
           to: { height: 0 },
         },
+        "flip-clock": {
+          from: { transform: "rotateX(-90deg)", opacity: "0.5" },
+          to: { transform: "rotateX(0deg)", opecity: "1" },
+        },
+      
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "collapsible-down": "collapsible-down 0.2s ease-in-out",
         "collapsible-up": "collapsible-up 0.2s ease-in-out",
+        "flip-clock": "flip-clock 0.2s ease-out",
       },
+      backdropBrightness: {
+        25: '.25',
+      }
     },
   },
   plugins: [animate],
