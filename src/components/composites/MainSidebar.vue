@@ -1,5 +1,4 @@
-<script setup lang="ts">
-import AnalyticsSidebarContent from "../pages/Analytics/components/AnalyticsSidebarContent.vue";
+<script setup>
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import {
@@ -76,23 +75,18 @@ const navItems = ref([
 </script>
 
 <template>
-  <Sidebar collapsible="icon">
+  <Sidebar collapsible="offcanvas">
     <SidebarHeader>
       <span class="flex justify-center items-center gap-2">
         <div class="relative w-[31px] h-[31px] hover:animate-spin">
-          <span
-            class="block rounded-full bg-primary w-[31px] h-[31px] border border-primary"
-          />
+          <span class="block rounded-full bg-primary w-[31px] h-[31px] border border-primary" />
           <Rocket class="absolute w-[19px] h-[19px] top-[6px] left-[6px]" />
         </div>
-        <span
-          :class="
-            cn(
-              'text-lg whitespace-nowrap',
-              sidebarState === 'collapsed' ? 'hidden' : 'inherit'
-            )
-          "
-        >
+        <span :class="cn(
+          'text-lg whitespace-nowrap',
+          sidebarState === 'collapsed' ? 'hidden' : 'inherit'
+        )
+          ">
           SITE NAME
         </span>
         <span class="sr-only">SITE NAME</span>
@@ -101,12 +95,7 @@ const navItems = ref([
     <SidebarContent>
       <SidebarGroup>
         <SidebarGroupLabel>Links</SidebarGroupLabel>
-        <SidebarMenuButton
-          v-for="item in navItems"
-          :key="item.title"
-          :tooltip="item.title"
-          as-child
-        >
+        <SidebarMenuButton v-for="item in navItems" :key="item.title" :tooltip="item.title" as-child>
           <a :href="item.href">
             <component :is="item.icon" />
             <span>{{ item.title }}</span>
@@ -121,10 +110,8 @@ const navItems = ref([
         <SidebarMenuItem>
           <DropdownMenu>
             <DropdownMenuTrigger as-child>
-              <SidebarMenuButton
-                size="lg"
-                class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-              >
+              <SidebarMenuButton size="lg"
+                class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
                 <Avatar class="h-8 w-8 rounded-lg">
                   <AvatarImage :src="data.user.avatar" :alt="data.user.name" />
                   <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
@@ -132,33 +119,24 @@ const navItems = ref([
                 <div class="grid flex-1 text-left text-sm leading-tight">
                   <span class="truncate font-semibold">{{
                     data.user.name
-                  }}</span>
+                    }}</span>
                   <span class="truncate text-xs">{{ data.user.email }}</span>
                 </div>
                 <ChevronsUpDown class="ml-auto size-4" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              class="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-              side="bottom"
-              align="end"
-              :side-offset="4"
-            >
+            <DropdownMenuContent class="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg" side="bottom"
+              align="end" :side-offset="4">
               <DropdownMenuLabel class="p-0 font-normal">
-                <div
-                  class="flex items-center gap-2 px-1 py-1.5 text-left text-sm"
-                >
+                <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                   <Avatar class="h-8 w-8 rounded-lg">
-                    <AvatarImage
-                      :src="data.user.avatar"
-                      :alt="data.user.name"
-                    />
+                    <AvatarImage :src="data.user.avatar" :alt="data.user.name" />
                     <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
                   </Avatar>
                   <div class="grid flex-1 text-left text-sm leading-tight">
                     <span class="truncate font-semibold">{{
                       data.user.name
-                    }}</span>
+                      }}</span>
                     <span class="truncate text-xs">{{ data.user.email }}</span>
                   </div>
                 </div>

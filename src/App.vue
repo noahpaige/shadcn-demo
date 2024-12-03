@@ -10,13 +10,10 @@
         </MainNav>
       </MainSidebar>
     </SidebarProvider>
-    <Toaster
-      closeButton
-      :toastOptions="{
-        unstyled: true,
-        class: 'bg-primary',
-      }"
-    />
+    <Toaster closeButton :toastOptions="{
+      unstyled: true,
+      class: 'bg-primary',
+    }" />
   </div>
 </template>
 <script setup>
@@ -25,23 +22,26 @@ import { useRoute } from "vue-router";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import MainSidebar from "./components/composites/MainSidebar.vue";
 import MainNav from "./components/composites/MainNav.vue";
-import HomeSidebarContent from "./components/pages/Home/components/HomeSidebarContent.vue";
-import AnalyticsSidebarContent from "./components/pages/Analytics/components/AnalyticsSidebarContent.vue";
 import { Toaster } from "@/components/ui/sonner";
+import routes from "./router/routes";
 
 const route = useRoute();
 
-const sidebarComponents = {
-  Home: HomeSidebarContent,
-  Analytics: AnalyticsSidebarContent,
-};
+const sidebarComponents = new Map(
+  routes.map((route) => [route.name, route.sidebar])
+);
 
 const currentSidebarComponent = ref(null);
 
 watch(
   route,
   (newRoute) => {
-    currentSidebarComponent.value = sidebarComponents[newRoute.name];
+    if (sidebarComponents.has(newRoute.name)) {
+      currentSidebarComponent.value = sidebarComponents.get(newRoute.name);
+    }
+
+
+    console.log(newRoute.name, newRoute.path, newRoute.fullPath);
   },
   { immediate: true }
 );

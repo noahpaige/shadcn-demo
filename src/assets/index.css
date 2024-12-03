@@ -4,6 +4,7 @@
 
 @layer base {
   * {
+    --nav-height: 4rem;
     @apply border-border;
   }
   body {
@@ -89,11 +90,12 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+
+@layer utilities {
+  .h-nav{
+    height: var(--nav-height);
   }
-  body {
-    @apply bg-background text-foreground;
+  .h-full-minus-nav {
+    height: calc(100vh - var(--nav-height));
   }
 }
