@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex gap-0.5 align-middle bg-opacity-10 bg-slate-900 rounded w-36 h-8 justify-center items-center select-none">
+        class="flex gap-0.5 align-middle  bg-slate-900/20  backdrop-invert rounded w-36 h-8 justify-center items-center select-none">
         <div class="flex flex-col items-center h-6 w-6 overflow-y-hidden">
             <div class="animate-flip-clock w-fit" v-for="(timeStr, index) in timeArr[0]" :key="index">
                 {{ timeStr }}
