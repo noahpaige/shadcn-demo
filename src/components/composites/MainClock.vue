@@ -2,13 +2,13 @@
     <div
         class="flex gap-0.5 align-middle  bg-slate-50/20 dark:bg-slate-900/20  backdrop-invert rounded w-36 h-8 justify-center items-center select-none">
         <div class="flex flex-col items-center h-6 w-6 overflow-y-hidden">
-            <div class="animate-flip-clock w-fit" v-for="(timeStr, index) in timeArr[0]" :key="index">
+            <div class="animate-flip-clock w-fit" v-for="(timeStr, index) in timeArr[0]" :key="`${index}-${timeStr}`">
                 {{ timeStr }}
             </div>
         </div>
         <div class="text-muted-foreground">:</div>
         <div class="flex flex-col items-center h-6 w-6 overflow-y-hidden">
-            <div class="animate-flip-clock w-fit" v-for="(timeStr, index) in timeArr[1]" :key="index">
+            <div class="animate-flip-clock w-fit" v-for="(timeStr, index) in timeArr[1]" :key="`${index}-${timeStr}`">
                 {{ timeStr }}
             </div>
         </div>
