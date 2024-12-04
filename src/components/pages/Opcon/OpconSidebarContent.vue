@@ -70,7 +70,7 @@ const data = [
   },
   {
     title: "Tasks",
-    url: "/opcon/todo",
+    url: "/opcon/tasks",
     isActive: true,
   },
   {

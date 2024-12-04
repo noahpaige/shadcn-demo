@@ -7,6 +7,7 @@ import LaunchfeedPage from "@/components/pages/Opcon/pages/LaunchfeedPage/Launch
 import AnalyticsSidebarContent from "@/components/pages/Analytics/AnalyticsSidebarContent.vue";
 import OpconSidebarContent from "@/components/pages/Opcon/OpconSidebarContent.vue";
 import HomeSidebarContent from "@/components/pages/Home/HomeSidebarContent.vue";
+import TasksPage from "@/components/pages/Opcon/pages/Tasks/TasksPage.vue";
 
 const routes = [
     {
@@ -30,6 +31,12 @@ const routes = [
         path: "/opcon/launchfeed",
         name: "Launch Feed",
         component: LaunchfeedPage,
+        sidebar: OpconSidebarContent
+    },
+        {
+        path: "/opcon/tasks",
+        name: "Tasks",
+        component: TasksPage,
         sidebar: OpconSidebarContent
     },
     {
