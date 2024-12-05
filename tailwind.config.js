@@ -92,9 +92,8 @@ module.exports = {
         },
         "flip-clock": {
           from: { transform: "rotateX(-90deg)", opacity: "0.5" },
-          to: { transform: "rotateX(0deg)", opecity: "1" },
+          to: { transform: "rotateX(0deg)", opacity: "1" },
         },
-      
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -104,8 +103,8 @@ module.exports = {
         "flip-clock": "flip-clock 0.2s ease-out",
       },
       backdropBrightness: {
-        25: '.25',
-      }
+        25: ".25",
+      },
     },
   },
   plugins: [animate],
